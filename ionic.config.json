@@ -1,0 +1,7 @@
+{
+  "name": "AcFireBase",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

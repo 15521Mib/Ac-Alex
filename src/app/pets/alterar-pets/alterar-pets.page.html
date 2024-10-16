@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Pets</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h1 class="ion-text-center">Alterar</h1>
+
+  <ion-item lines="full">
+    <ion-label position="floating">Nome</ion-label>
+    <ion-input [(ngModel)]="pet.nome"></ion-input>
+  </ion-item>
+
+  <ion-item lines="full">
+    <ion-label position="floating">Especie</ion-label>
+    <ion-input [(ngModel)]="pet.especie"></ion-input>
+  </ion-item>
+
+  <ion-item lines="full">
+    <ion-label position="floating">Idade</ion-label>
+    <ion-input [(ngModel)]="pet.idade" class="ion-text-right" type="number"></ion-input>
+  </ion-item>
+
+  <ion-item lines="full">
+    <ion-label position="floating">Observações</ion-label>
+    <ion-input [(ngModel)]="pet.obs"></ion-input>
+  </ion-item>
+
+
+  <br>
+
+  <ion-button expand="block" (click)="salvar()">Salvar</ion-button>
+  <ion-button expand="block" fill="outline" routerLink="/">Voltar</ion-button>
+</ion-content>

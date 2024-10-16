@@ -1,0 +1,40 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Pets e Cuidadores
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-item *ngIf="listaPets.length === 0">
+    <ion-label>Nenhum registro de pets encontrado...</ion-label>
+  </ion-item>
+
+  <ion-item-sliding *ngFor="let pets of listaPets">
+    <ion-item lines="full">
+      <ion-label>{{pets.nome}}</ion-label>
+      <ion-label>{{pets.especie}}</ion-label>
+      <ion-label>{{pets.idade}}</ion-label>
+      <ion-label>{{pets.obs}}</ion-label>
+    </ion-item>
+
+  <ion-item-options side="end">
+    <ion-item-option color="warning" routerLink="/pets/alterar-pets/{{pets.id}}">
+      <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+    </ion-item-option>
+
+    <ion-item-option color="danger" (click)="deletarPets(pets.id)">
+      <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+    </ion-item-option>
+  </ion-item-options>
+</ion-item-sliding>
+
+ 
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/pets/cadastro-pets">
+      <ion-icon name="fish-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
