@@ -33,7 +33,7 @@ export class HomePage implements OnInit {
         id: registro.payload.doc.id,
         nome: registro.payload.doc.data()['nome'],
         especie: registro.payload.doc.data()['especie'],
-        raça: registro.payload.doc.data()['raça'],
+        raca: registro.payload.doc.data()['raca'],
         idade: registro.payload.doc.data()['idade'],
         obs: registro.payload.doc.data()['obs'],
       }));

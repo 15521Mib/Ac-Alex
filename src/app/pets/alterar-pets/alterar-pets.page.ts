@@ -25,6 +25,7 @@ export class AlterarPetsPage implements OnInit {
     this.ptService.buscarPorId(this.pet.id).subscribe((dados: any) => {
       this.pet.nome = dados['nome'];
       this.pet.especie = dados['especie'];
+      this.pet.raca = dados['raca'];
       this.pet.idade = dados['idade'];
       this.pet.obs = dados['obs'];
     });

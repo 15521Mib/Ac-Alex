@@ -1,80 +1,77 @@
-<ion-header [translucent]="true">
+<ion-header translucent>
   <ion-toolbar>
-    <ion-title>
-      App Gerenciamento de Pets
-    </ion-title>
+    <ion-title>Gerenciamento de Pets</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
+<ion-content fullscreen>
+
+  <h1>Pets Cadastrados:</h1>
+
   <ion-item *ngIf="listaPets.length === 0">
     <ion-icon name="logo-octocat"></ion-icon>
-    <ion-label>Nenhum registro de animais encontrado...</ion-label>
+    <ion-label>Nenhum pet encontrado... 😢</ion-label>
   </ion-item>
 
-  <ion-item-sliding *ngFor="let pets of listaPets">
-    <ion-item lines="full">
-      <ion-label>{{pets.nome}}</ion-label>
-      <ion-label>{{pets.especie}}</ion-label>
-      <ion-label>{{pets.idade}}</ion-label>
-      <ion-label>{{pets.obs}}</ion-label>
-    </ion-item>
+  <ion-card *ngFor="let pets of listaPets">
+    <ion-card-header>
+      <ion-card-title>{{ pets.nome }}</ion-card-title>
+    </ion-card-header>
 
-  <ion-item-options side="end">
-    <ion-item-option color="warning" routerLink="/pets/alterar-pets/{{pets.id}}">
-      <ion-icon slot="icon-only" name="create-outline"></ion-icon>
-    </ion-item-option>
+    <ion-card-content>
+      <p>Espécie: {{ pets.especie }}</p>
+      <p>Raça: {{ pets.raca }}</p>
+      <p>Idade: {{ pets.idade }}</p>
+      <p>Observações: {{ pets.obs }}</p>
 
-    <ion-item-option color="danger" (click)="deletarPets(pets.id)">
-      <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
-    </ion-item-option>
-  </ion-item-options>
-</ion-item-sliding>
+      <ion-button fill="outline" color="warning" [routerLink]="'/pets/alterar-pets/' + pets.id">
+        <ion-icon slot="start" name="create-outline"></ion-icon>
+        Alterar
+      </ion-button>
 
-<ion-item>
-</ion-item>
-<ion-item *ngIf="listaCuidadores.length === 0">
-  <ion-icon name="person-outline"></ion-icon>
-  <ion-label>Nenhum registro de cuidadores encontrado...</ion-label>
-</ion-item>
+      <ion-button fill="outline" color="danger" (click)="deletarPets(pets.id)">
+        <ion-icon slot="start" name="trash-outline"></ion-icon>
+        Deletar
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
 
-<ion-item-sliding *ngFor="let cuidadores of listaCuidadores">
-  <ion-item lines="full">
-    <ion-label>{{cuidadores.nome}}</ion-label>
-    <ion-label>{{cuidadores.telefone}}</ion-label>
-    <ion-label>{{cuidadores.exp}}</ion-label>
-    <ion-label>{{cuidadores.escp}}</ion-label>
+  <ion-button routerLink="/pets/cadastro-pets" color="tertiary">
+      <ion-icon name="add-circle-outline"></ion-icon>
+  </ion-button>
+
+  <h1 className="textinho">Cuidadores Cadastrados:</h1>
+
+  <ion-item *ngIf="listaCuidadores.length === 0">
+    <ion-icon name="person-circle-outline"></ion-icon>
+    <ion-label>Nenhum cuidador encontrado... 😢</ion-label>
   </ion-item>
 
+  <ion-card *ngFor="let cuidadores of listaCuidadores">
+    <ion-card-header>
+      <ion-card-title>{{ cuidadores.nome }}</ion-card-title>
+    </ion-card-header>
 
-  <ion-item-options side="end">
-    <ion-item-option
-      color="warning"
-      routerLink="/cuidadores/alterar-cuidadores/{{cuidadores.id}}"
-    >
-      <ion-icon slot="icon-only" name="create-outline"></ion-icon>
-    </ion-item-option>
+    <ion-card-content>
+      <p>Telefone: {{ cuidadores.telefone }}</p>
+      <p>Experiência: {{ cuidadores.exp }}</p>
+      <p>Especialidade: {{ cuidadores.escp }}</p>
 
-    <ion-item-option
-      color="danger"
-      (click)="daletarCuidadores(cuidadores.id)"
-    >
-      <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
-    </ion-item-option>
-  </ion-item-options>
-</ion-item-sliding>
+      <ion-button fill="outline" color="warning" [routerLink]="'/cuidadores/alterar-cuidadores/' + cuidadores.id">
+        <ion-icon slot="start" name="create-outline"></ion-icon>
+        Alterar
+      </ion-button>
+
+      <ion-button fill="outline" color="danger" (click)="daletarCuidadores(cuidadores.id)">
+        <ion-icon slot="start" name="trash-outline"></ion-icon>
+        Deletar
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
 
 
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button routerLink="/pets/cadastro-pets">
-      <ion-icon name="logo-octocat"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-
-  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
-    <ion-fab-button routerLink="/cuidadores/cadastro-cuidadores">
-      <ion-icon name="person-outline"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+  <ion-button routerLink="/cuidadores/cadastro-cuidadores" color="tertiary">
+    <ion-icon name="add-circle-outline"></ion-icon>
+</ion-button>
 
 </ion-content>
