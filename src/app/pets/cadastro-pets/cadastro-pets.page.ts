@@ -16,8 +16,8 @@ export class CadastroPetsPage {
 
   constructor( private PtService: PetsService,
     private route: Router ) { }
-   
-  
+
+
 
   salvar(){
     this.PtService.salvar(this.pet)

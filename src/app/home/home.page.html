@@ -1,14 +1,15 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Pets e Cuidadores
+      App Gerenciamento de Pets
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-item *ngIf="listaPets.length === 0">
-    <ion-label>Nenhum registro de pets encontrado...</ion-label>
+    <ion-icon name="logo-octocat"></ion-icon>
+    <ion-label>Nenhum registro de animais encontrado...</ion-label>
   </ion-item>
 
   <ion-item-sliding *ngFor="let pets of listaPets">
@@ -30,10 +31,49 @@
   </ion-item-options>
 </ion-item-sliding>
 
- 
+<ion-item>
+</ion-item>
+<ion-item *ngIf="listaCuidadores.length === 0">
+  <ion-icon name="person-outline"></ion-icon>
+  <ion-label>Nenhum registro de cuidadores encontrado...</ion-label>
+</ion-item>
+
+<ion-item-sliding *ngFor="let cuidadores of listaCuidadores">
+  <ion-item lines="full">
+    <ion-label>{{cuidadores.nome}}</ion-label>
+    <ion-label>{{cuidadores.telefone}}</ion-label>
+    <ion-label>{{cuidadores.exp}}</ion-label>
+    <ion-label>{{cuidadores.escp}}</ion-label>
+  </ion-item>
+
+
+  <ion-item-options side="end">
+    <ion-item-option
+      color="warning"
+      routerLink="/cuidadores/alterar-cuidadores/{{cuidadores.id}}"
+    >
+      <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+    </ion-item-option>
+
+    <ion-item-option
+      color="danger"
+      (click)="daletarCuidadores(cuidadores.id)"
+    >
+      <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+    </ion-item-option>
+  </ion-item-options>
+</ion-item-sliding>
+
+
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
     <ion-fab-button routerLink="/pets/cadastro-pets">
-      <ion-icon name="fish-outline"></ion-icon>
+      <ion-icon name="logo-octocat"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-fab vertical="bottom" horizontal="start" slot="fixed">
+    <ion-fab-button routerLink="/cuidadores/cadastro-cuidadores">
+      <ion-icon name="person-outline"></ion-icon>
     </ion-fab-button>
   </ion-fab>
 

@@ -1,6 +1,8 @@
 export class Cuidadores {
-    nome: string ;
-    telefone: string;
-    exp: string;
-    escp: string;
+    nome: string = ``;
+    telefone: string = ``;
+    exp: string = ``;
+    escp: string = ``;
+    id: string = ``;
+
   }

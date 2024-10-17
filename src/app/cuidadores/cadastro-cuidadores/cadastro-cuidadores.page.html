@@ -1,13 +1,35 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>cadastro-cuidadores</ion-title>
+    <ion-title>Cadastro Cuidadores</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">cadastro-cuidadores</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <h1 class="ion-text-center">CADASTRO</h1>
+
+  <ion-item lines="full">
+    <ion-label position="floating">Nome</ion-label>
+    <ion-input [(ngModel)]="cuidador.nome"></ion-input>
+  </ion-item>
+
+  <ion-item lines="full">
+    <ion-label position="floating">Telefone</ion-label>
+    <ion-input [(ngModel)]="cuidador.telefone" type="number" class="ion-text-left"></ion-input>
+  </ion-item>
+
+  <ion-item lines="full">
+    <ion-label position="floating">Experiencia (ano)</ion-label>
+    <ion-input [(ngModel)]="cuidador.exp" type="number" class="ion-text-left"></ion-input>
+  </ion-item>
+
+  <ion-item lines="full">
+    <ion-label position="floating">Especialidade</ion-label>
+    <ion-input [(ngModel)]="cuidador.escp"></ion-input>
+  </ion-item>
+
+  <br>
+
+  <ion-button expand="block" (click)="salvar()">Salvar</ion-button>
+  <ion-button expand="block" fill="outline" routerLink="/">Voltar</ion-button>
 </ion-content>
+

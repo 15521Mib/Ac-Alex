@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { PetsService } from '../services/pets.service';
 import { Pets } from '../models/Pets';
 import { AlertController } from '@ionic/angular';
+import { Cuidadores } from '../models/Cuidadores';
+import { CuidadoresService } from '../services/cuidadores.service';
 
 @Component({
   selector: 'app-home',
@@ -11,14 +13,17 @@ import { AlertController } from '@ionic/angular';
 export class HomePage implements OnInit {
 
   public listaPets: Pets[] = []; // Lista para armazenar os pets
+  public listaCuidadores: Cuidadores[] = [];
 
   constructor(
     private petService: PetsService, // Injetando o serviço de Pets
+    private cdService: CuidadoresService,
     private alertController: AlertController // Injetando o AlertController
   ) {}
 
   ngOnInit(): void {
-    this.buscarPets(); 
+    this.buscarPets();
+    this.buscarCuidadores();
   }
 
   buscarPets(): void {
@@ -33,6 +38,20 @@ export class HomePage implements OnInit {
         obs: registro.payload.doc.data()['obs'],
       }));
     });
+  }
+
+  buscarCuidadores(): void {
+    this.cdService.buscarCuidadores().subscribe(dadosRetorno => {
+      this.listaCuidadores = dadosRetorno.map((registro:any) => (
+        {
+          id: registro.payload.doc.id,
+          nome: registro.payload.doc.data()['nome'],
+          telefone: registro.payload.doc.data()['telefone'],
+          exp: registro.payload.doc.data()['exp'],
+          escp: registro.payload.doc.data()['escp']
+        }
+      ))
+    })
   }
 
   async deletarPets(id: string) {
@@ -60,6 +79,30 @@ export class HomePage implements OnInit {
     await alert.present();
   }
 
-  
+  async daletarCuidadores(id: string){
+    const alert = await this.alertController.create({
+      header: 'Confirmar exclusão deste cuidador?',
+      buttons: [
+        {
+          text: 'Não',
+          role: 'cancel',
+          handler: () => {
+
+          },
+        },
+        {
+          text: 'Sim',
+          role: 'confirm',
+          handler: () => {
+            this.cdService.deletar(id);
+          },
+        },
+      ],
+    });
+    await alert.present();
+    this.buscarCuidadores();
+  }
+
+
 
 }
