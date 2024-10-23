@@ -10,7 +10,7 @@
 
   <ion-item *ngIf="listaPets.length === 0">
     <ion-icon name="logo-octocat"></ion-icon>
-    <ion-label>Nenhum pet encontrado... 😢</ion-label>
+    <ion-label>❌Não a pet, na sua pesquisa❌</ion-label>
   </ion-item>
 
   <ion-card *ngFor="let pets of listaPets">
@@ -31,12 +31,12 @@
 
       <ion-button fill="outline" color="danger" (click)="deletarPets(pets.id)">
         <ion-icon slot="start" name="trash-outline"></ion-icon>
-        Deletar
+        Apagar
       </ion-button>
     </ion-card-content>
   </ion-card>
 
-  <ion-button routerLink="/pets/cadastro-pets" color="tertiary">
+  <ion-button routerLink="/pets/cadastro-pets" color="secondary">
       <ion-icon name="add-circle-outline"></ion-icon>
   </ion-button>
 
@@ -44,7 +44,7 @@
 
   <ion-item *ngIf="listaCuidadores.length === 0">
     <ion-icon name="person-circle-outline"></ion-icon>
-    <ion-label>Nenhum cuidador encontrado... 😢</ion-label>
+    <ion-label>❌Não a cuidador, encontrado❌</ion-label>
   </ion-item>
 
   <ion-card *ngFor="let cuidadores of listaCuidadores">
@@ -53,7 +53,7 @@
     </ion-card-header>
 
     <ion-card-content>
-      <p>Telefone: {{ cuidadores.telefone }}</p>
+      <p>Numero de telefone: {{ cuidadores.telefone }}</p>
       <p>Experiência: {{ cuidadores.exp }}</p>
       <p>Especialidade: {{ cuidadores.escp }}</p>
 
@@ -64,13 +64,13 @@
 
       <ion-button fill="outline" color="danger" (click)="daletarCuidadores(cuidadores.id)">
         <ion-icon slot="start" name="trash-outline"></ion-icon>
-        Deletar
+        Apagar
       </ion-button>
     </ion-card-content>
   </ion-card>
 
 
-  <ion-button routerLink="/cuidadores/cadastro-cuidadores" color="tertiary">
+  <ion-button routerLink="/cuidadores/cadastro-cuidadores" color="secondary">
     <ion-icon name="add-circle-outline"></ion-icon>
 </ion-button>
 
