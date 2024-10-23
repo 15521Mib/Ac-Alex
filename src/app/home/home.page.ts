@@ -12,13 +12,13 @@ import { CuidadoresService } from '../services/cuidadores.service';
 })
 export class HomePage implements OnInit {
 
-  public listaPets: Pets[] = []; // Lista para armazenar os pets
+  public listaPets: Pets[] = []; // Lista que armazenar os pets
   public listaCuidadores: Cuidadores[] = [];
 
   constructor(
-    private petService: PetsService, // Injetando o serviço de Pets
+    private petService: PetsService, // Colocando os serviços de Pets
     private cdService: CuidadoresService,
-    private alertController: AlertController // Injetando o AlertController
+    private alertController: AlertController // Colocando o AlertController
   ) {}
 
   ngOnInit(): void {
@@ -28,7 +28,7 @@ export class HomePage implements OnInit {
 
   buscarPets(): void {
     this.petService.buscarPets().subscribe((dadosRetorno: any) => {
-      // Mapeando os dados retornados e atribuindo à lista de pets
+      // Mapear os dados retornados e atribuir na lista de pets
       this.listaPets = dadosRetorno.map((registro: any) => ({
         id: registro.payload.doc.id,
         nome: registro.payload.doc.data()['nome'],
@@ -56,13 +56,13 @@ export class HomePage implements OnInit {
 
   async deletarPets(id: string) {
     const alert = await this.alertController.create({
-      header: 'Confirma exclusão deste pet?',
+      header: 'Certeza de quer excluir esse pet?',
       buttons: [
         {
           text: 'Não',
           role: 'cancel',
           handler: () => {
-            // Ação cancelada, nada a fazer
+            // Quando a ação é cancelada, nada acontece
           },
         },
         {
@@ -70,7 +70,7 @@ export class HomePage implements OnInit {
           role: 'confirm',
           handler: () => {
             this.petService.deletar(id).then(() => {
-              this.buscarPets(); // Atualizando a lista após exclusão
+              this.buscarPets(); // Atualizar a lista depois de excluir
             });
           },
         },
@@ -81,7 +81,7 @@ export class HomePage implements OnInit {
 
   async daletarCuidadores(id: string){
     const alert = await this.alertController.create({
-      header: 'Confirmar exclusão deste cuidador?',
+      header: 'Certeza de quer excluir esse cuidador?',
       buttons: [
         {
           text: 'Não',
