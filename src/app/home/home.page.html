@@ -6,7 +6,7 @@
 
 <ion-content fullscreen>
 
-  <h1>Pets Cadastrados:</h1>
+  <h1>Pets registrados:</h1>
 
   <ion-item *ngIf="listaPets.length === 0">
     <ion-icon name="logo-octocat"></ion-icon>
@@ -21,16 +21,16 @@
     <ion-card-content>
       <p>Espécie: {{ pets.especie }}</p>
       <p>Raça: {{ pets.raca }}</p>
-      <p>Idade: {{ pets.idade }}</p>
-      <p>Observações: {{ pets.obs }}</p>
+      <p>Anos de vida: {{ pets.idade }}</p>
+      <p>Analise: {{ pets.obs }}</p>
 
-      <ion-button fill="outline" color="warning" [routerLink]="'/pets/alterar-pets/' + pets.id">
+      <ion-button fill="outline" color="success" [routerLink]="'/pets/alterar-pets/' + pets.id">
         <ion-icon slot="start" name="create-outline"></ion-icon>
         Alterar
       </ion-button>
 
       <ion-button fill="outline" color="danger" (click)="deletarPets(pets.id)">
-        <ion-icon slot="start" name="trash-outline"></ion-icon>
+        <ion-icon slot="start" name="flame-outline" ></ion-icon>
         Apagar
       </ion-button>
     </ion-card-content>
@@ -40,7 +40,7 @@
       <ion-icon name="add-circle-outline"></ion-icon>
   </ion-button>
 
-  <h1 className="textinho">Cuidadores Cadastrados:</h1>
+  <h1 className="textinho">Cuidadores registrados:</h1>
 
   <ion-item *ngIf="listaCuidadores.length === 0">
     <ion-icon name="person-circle-outline"></ion-icon>
@@ -57,13 +57,13 @@
       <p>Experiência: {{ cuidadores.exp }}</p>
       <p>Especialidade: {{ cuidadores.escp }}</p>
 
-      <ion-button fill="outline" color="warning" [routerLink]="'/cuidadores/alterar-cuidadores/' + cuidadores.id">
+      <ion-button fill="outline" color="success" [routerLink]="'/cuidadores/alterar-cuidadores/' + cuidadores.id">
         <ion-icon slot="start" name="create-outline"></ion-icon>
         Alterar
       </ion-button>
 
       <ion-button fill="outline" color="danger" (click)="daletarCuidadores(cuidadores.id)">
-        <ion-icon slot="start" name="trash-outline"></ion-icon>
+        <ion-icon slot="start" name="flame-outline"></ion-icon>
         Apagar
       </ion-button>
     </ion-card-content>
